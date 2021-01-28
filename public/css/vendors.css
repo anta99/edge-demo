@@ -1,0 +1,143 @@
+[class*='box-'] {
+    height: 6px;
+    width: 400px;
+    background: #eee;
+    margin-bottom: 13px;
+    margin-right: 5px;
+}
+
+.box-loading {
+    background: #fff;
+    height: 325px;
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: block;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.box-thumbnail {
+    height: 40px;
+    width: 40px;
+    float: left;
+    margin-right: 10px;
+}
+
+.box-line-sm {
+    width: 120px;
+    margin-top: 10px;
+    overflow: hidden;
+    height: 20px;
+}
+
+.box-line-xs {
+    width: 80px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.box-line-df {
+    margin-top: 30px;
+    clear: both;
+    width: 380px;
+}
+
+.box-line-lg {
+    width: 200px;
+    height: 20px;
+}
+
+.box-line-lgx {
+    width: 450px;
+}
+[class*='box-line'],
+.box-thumbnail {
+    animation: timeline;
+    animation-duration: 1.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    background: linear-gradient(to right, #f0f8ff 8%, #e3f1fd 18%, #f0f8ff 33%);
+    background-size: 800px auto;
+}
+@keyframes timeline {
+    0% {
+        background-position: -350px 0;
+    }
+    100% {
+        background-position: 400px 0;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    max-height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(24, 29, 39, 0.5);
+}
+
+::-webkit-scrollbar-track {
+    background: 0 0;
+}
+
+/* spinner */
+.dot-flashing {
+    position: relative;
+    width: 5px;
+    height: 5px;
+    margin-right: 20px;
+    border-radius: 5px;
+    background-color: #545a76;
+    color: #545a76;
+    animation: dotFlashing 1s infinite linear alternate;
+    animation-delay: 0.5s;
+}
+
+.dot-flashing::before,
+.dot-flashing::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+}
+
+.dot-flashing::before {
+    left: -10px;
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #545a76;
+    color: #545a76;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 0s;
+}
+
+.dot-flashing::after {
+    left: 10px;
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #545a76;
+    color: #545a76;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 1s;
+}
+
+@keyframes dotFlashing {
+    0% {
+        background-color: #545a76;
+    }
+    50%,
+    100% {
+        background-color: #eeeeee;
+    }
+}

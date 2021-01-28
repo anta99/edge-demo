@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon//favicon-16x16.png">
+    <link rel="stylesheet" href="css/vendors.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/map.css">
+    <script src='https://cdn.jsdelivr.net/npm/@turf/turf/turf.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <title>edge hosting demo by appfleet</title>
+</head>
+<body>
+
+    <div class="header__container">
+        <%- include('./components/navbar') %> 
+
+        <div id='map'>
+            <div class="about__text">
+                <h2>Welcome to a globally distributed website hosted by appfleet</h2>
+                <p>This website is currently deployed in 5 locations across the world and you were connected to the best one based on location, latency and uptime</p>
+            </div>
+        </div>
+
+        <%- include('./components/info') %> 
+    </div>
+
+    <div class="row container debug__container">
+        <%- include('./components/debug') %> 
+        <%- include('./components/env') %> 
+    </div>
+
+    <script>
+		// GLOBALS
+        var {client, regions} = JSON.parse('<%- JSON.stringify(data) %>')
+        var env = JSON.parse(document.querySelector('.env[data]').getAttribute('data'))
+        var headers = JSON.parse(document.querySelector('.debug[data]').getAttribute('data'))
+        mapboxgl.accessToken = env.MAPBOX_TOKEN
+        
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: env.MAPBOX_STYLE,
+            zoom: 1,
+            center: [client.lon, client.lat],
+            interactive: false,
+        })
+    </script>
+    <script src="js/mapbox.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      onMapLoad()         
+    </script>
+</body>
+</html>

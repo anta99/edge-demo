@@ -1,0 +1,10 @@
+<div class="box debug" data='<%- JSON.stringify(headers) %>'>
+    <h2 class="title">Debug Information</h2>
+    <div class="content">
+        <ol>
+            <% Object.keys(headers).forEach(key => { %>
+                <li><%= key %>: <%- headers[key] %></li>
+            <% }) %>
+        </ol>
+    </div>
+</div>
